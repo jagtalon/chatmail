@@ -26,12 +26,6 @@ Responsible for the processing of your personal data is:
 
 E-mail: {{ config.privacy_mail }}
 
-We have appointed a data protection officer:
-
-```
-{{ config.privacy_pdo }}
-```
-
 ## 2. Processing when using chat e-mail services
 
 We provide e-mail services optimized for the use from [Delta Chat](https://delta.chat) apps 
@@ -49,8 +43,7 @@ we process the following data and details:
   on behalf of their users until the message can be delivered.
 
 - E-Mail-Messages are stored for the recipient and made accessible via IMAP protocols,
-  until explicitly deleted by the user or until a fixed time period is exceeded,
-  (*usually 4-8 weeks*).
+  until explicitly deleted by the user or until a fixed time period is exceeded, (7 days).
 
 - IMAP and SMTP protocols are password protected with unique credentials for each account.
 
@@ -221,13 +214,6 @@ directly in the Delta Chat email messenger.
 If you have any questions or complaints, 
 please feel free to contact us by email:  
 {{ config.privacy_mail }}
-
-As a rule, you can contact the supervisory authority of your usual place of residence
-or workplace
-or our registered office for this purpose.
-The supervisory authority responsible for our place of business
-is the `{{ config.privacy_supervisor }}`.
-
 
 ## 6. Validity of this privacy policy 
 

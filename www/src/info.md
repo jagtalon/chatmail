@@ -49,7 +49,4 @@ The first login sets your password.
 
 ### Who are the operators? Which software is running? 
 
-This chatmail provider is run by a small voluntary group of devs and sysadmins,
-who [publically develop chatmail provider setups](https://github.com/deltachat/chatmail).
-Chatmail setups aim to be very low-maintenance, resource efficient and 
-interoperable with any other standards-compliant e-mail service. 
+This server is a part of [Aangat Lahat](https://aangat.lahat.computer) which is run by [Jag Talon](https://jagtalon.net).
