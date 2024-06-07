@@ -1,7 +1,7 @@
 
 <img class="banner" src="collage-top.png"/>
 
-# Chika, a private email service designed for [Delta Chat](https://delta.chat) 
+# Chika, a [private email service](/privacy.html) designed for [Delta Chat](https://delta.chat) 
 
 Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). It has the following features and limitations:
 
