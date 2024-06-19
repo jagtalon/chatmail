@@ -2,6 +2,16 @@
 
 ## untagged
 
+- Reject DKIM signatures that do not cover the whole message body.
+  ([#321](https://github.com/deltachat/chatmail/pull/321))
+
+- check that OpenPGP has only PKESK, SKESK and SEIPD packets
+  ([#323](https://github.com/deltachat/chatmail/pull/323),
+   [#324](https://github.com/deltachat/chatmail/pull/324))
+
+- improve filtermail checks for encrypted messages and drop support for unencrypted MDNs
+  ([#320](https://github.com/deltachat/chatmail/pull/320))
+
 ## 1.3.0 - 2024-06-06
 
 - don't check necessary DNS records on cmdeploy init anymore
