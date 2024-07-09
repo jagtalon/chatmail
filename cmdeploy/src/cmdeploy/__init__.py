@@ -338,20 +338,6 @@ def _configure_dovecot(config: Config, debug: bool = False) -> bool:
     )
     need_restart |= lua_push_notification_script.changed
 
-    sieve_script = files.put(
-        src=importlib.resources.files(__package__).joinpath("dovecot/default.sieve"),
-        dest="/etc/dovecot/default.sieve",
-        user="root",
-        group="root",
-        mode="644",
-    )
-    need_restart |= sieve_script.changed
-    if sieve_script.changed:
-        server.shell(
-            name="compile sieve script",
-            commands=["/usr/bin/sievec /etc/dovecot/default.sieve"],
-        )
-
     files.template(
         src=importlib.resources.files(__package__).joinpath("dovecot/expunge.cron.j2"),
         dest="/etc/cron.d/expunge",
@@ -479,11 +465,6 @@ def deploy_chatmail(config_path: Path) -> None:
     )
     server.user(name="Create echobot user", user="echobot", system=True)
 
-    server.shell(
-        name="Fix file owner in /home/vmail",
-        commands=["test -d /home/vmail && chown -R vmail:vmail /home/vmail"],
-    )
-
     # Add our OBS repository for dovecot_no_delay
     files.put(
         name="Add Deltachat OBS GPG key to apt keyring",
@@ -548,7 +529,7 @@ def deploy_chatmail(config_path: Path) -> None:
 
     apt.packages(
         name="Install Dovecot",
-        packages=["dovecot-imapd", "dovecot-lmtpd", "dovecot-sieve"],
+        packages=["dovecot-imapd", "dovecot-lmtpd"],
     )
 
     apt.packages(
@@ -649,5 +630,3 @@ def deploy_chatmail(config_path: Path) -> None:
         name="Ensure cron is installed",
         packages=["cron"],
     )
-
-

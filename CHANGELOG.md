@@ -2,11 +2,23 @@
 
 ## untagged
 
+- remove checking of reverse-DNS PTR records.  Chatmail-servers don't
+  depend on it and even in the wider e-mail system it's not common anymore. 
+  If it's an issue, a chatmail operator can still care to properly set reverse DNS. 
+  ([#348](https://github.com/deltachat/chatmail/pull/348))
+
+- Make DNS-checking faster and more interactive, run it fully during "cmdeploy run",
+  also introducing a generic mechanism for rapid remote ssh-based python function execution. 
+  ([#346](https://github.com/deltachat/chatmail/pull/346))
+
+- Don't fix file owner ship of /home/vmail 
+  ([#345](https://github.com/deltachat/chatmail/pull/345))
+
+- Support iterating over all users with doveadm commands 
+  ([#344](https://github.com/deltachat/chatmail/pull/344))
+
 - Test and fix for attempts to create inadmissible accounts 
   ([#333](https://github.com/deltachat/chatmail/pull/321))
-
-- Reject DKIM signatures that do not cover the whole message body.
-  ([#321](https://github.com/deltachat/chatmail/pull/321))
 
 - check that OpenPGP has only PKESK, SKESK and SEIPD packets
   ([#323](https://github.com/deltachat/chatmail/pull/323),
@@ -17,6 +29,27 @@
 
 - replace `bash` with `/bin/sh`
   ([#334](https://github.com/deltachat/chatmail/pull/334))
+
+- Increase number of logged in IMAP sessions to 50000
+  ([#335](https://github.com/deltachat/chatmail/pull/335))
+
+- filtermail: do not allow ASCII armor without actual payload
+  ([#325](https://github.com/deltachat/chatmail/pull/325))
+
+- Remove sieve to enable hardlink deduplication in LMTP
+  ([#343](https://github.com/deltachat/chatmail/pull/343))
+
+- dovecot: enable gzip compression on disk
+  ([#341](https://github.com/deltachat/chatmail/pull/341))
+
+- DKIM-sign Content-Type and oversign all signed headers
+  ([#296](https://github.com/deltachat/chatmail/pull/296))
+
+- Add nonci_accounts metric
+  ([#347](https://github.com/deltachat/chatmail/pull/347))
+
+- doveauth: log when a new account is created
+  ([#349](https://github.com/deltachat/chatmail/pull/349))
 
 ## 1.3.0 - 2024-06-06
 

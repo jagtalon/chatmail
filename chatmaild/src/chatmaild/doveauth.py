@@ -121,12 +121,22 @@ def lookup_passdb(db, config: Config, user, cleartext_password):
         q = """INSERT INTO users (addr, password, last_login)
                VALUES (?, ?, ?)"""
         conn.execute(q, (user, encrypted_password, int(time.time())))
+        print(f"Created account {user}", file=sys.stderr)
         return dict(
             home=f"/home/vmail/mail/{config.mail_domain}/{user}",
             uid="vmail",
             gid="vmail",
             password=encrypted_password,
         )
+
+
+def iter_userdb(db, config: Config) -> list:
+    """Get a list of all user addresses."""
+    with db.read_connection() as conn:
+        rows = conn.execute(
+            "SELECT addr from users",
+        ).fetchall()
+    return [x[0] for x in rows]
 
 
 def split_and_unescape(s):
@@ -192,6 +202,15 @@ def handle_dovecot_request(msg, db, config: Config):
                     reply_command = "N"
         json_res = json.dumps(res) if res else ""
         return f"{reply_command}{json_res}\n"
+    elif short_command == "I":  # ITERATE
+        # example: I0\t0\tshared/userdb/
+        parts = msg[1:].split("\t")
+        if parts[2] == "shared/userdb/":
+            result = "".join(
+                f"Oshared/userdb/{user}\t\n" for user in iter_userdb(db, config)
+            )
+            return f"{result}\n"
+
     raise UnknownCommand(msg)
 
 
