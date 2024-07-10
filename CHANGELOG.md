@@ -2,6 +2,10 @@
 
 ## untagged
 
+- BREAKING: new required chatmail.ini value 'delete_inactive_users_after = 100'
+  which removes users from database and mails after 100 days without any login. 
+  ([#350](https://github.com/deltachat/chatmail/pull/350))
+
 - remove checking of reverse-DNS PTR records.  Chatmail-servers don't
   depend on it and even in the wider e-mail system it's not common anymore. 
   If it's an issue, a chatmail operator can still care to properly set reverse DNS. 
