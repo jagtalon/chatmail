@@ -3,11 +3,11 @@
 
 # Chika, a [private email service](/privacy.html) designed for [Delta Chat](https://delta.chat) 
 
-Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). It has the following features and limitations:
+Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
 
 - You can create as many accounts as you want.
-- Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages will remain on your phone/computer.
-- Only encrypted messages are allowed when sending, but you can receive unencrypted messages (to receive newsletters, for example).
+- Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages on Delta Chat are untouched.
+- Only encrypted messages are allowed when sending, but you can receive unencrypted messages.
 - No phone numbers, other email addresses, names, etc. are needed for an account. Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well.
 
 ## Creating an account:
