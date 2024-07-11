@@ -63,7 +63,7 @@ we process the following data and details:
   on behalf of their users until the message can be delivered.
 
 - E-Mail-Messages are stored for the recipient and made accessible via IMAP protocols,
-  until explicitly deleted by the user or until a fixed time period is exceeded, (7 days).
+  until explicitly deleted by the user or until a fixed time period is exceeded, ({{config.delete_mails_after}} days).
 
 - IMAP and SMTP protocols are password protected with unique credentials for each account.
 
