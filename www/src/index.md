@@ -6,7 +6,7 @@
 Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). It has the following features and limitations:
 
 - You can create as many accounts as you want.
-- Messages are automatically deleted on the server after 7 days. Downloaded messages will remain on your phone/computer.
+- Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages will remain on your phone/computer.
 - Only encrypted messages are allowed when sending, but you can receive unencrypted messages (to receive newsletters, for example).
 - No phone numbers, other email addresses, names, etc. are needed for an account. Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well.
 
