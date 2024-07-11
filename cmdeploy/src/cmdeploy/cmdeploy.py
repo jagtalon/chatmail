@@ -38,7 +38,7 @@ def init_cmd(args, out):
     if args.inipath.exists():
         print(f"Path exists, not modifying: {args.inipath}")
     else:
-        write_initial_config(args.inipath, mail_domain)
+        write_initial_config(args.inipath, mail_domain, overrides={})
         out.green(f"created config file for {mail_domain} in {args.inipath}")
 
 
@@ -128,7 +128,7 @@ def test_cmd(args, out):
         "-n4",
         "-rs",
         "-x",
-        "-vrx",
+        "-v",
         "--durations=5",
     ]
     if args.slow:

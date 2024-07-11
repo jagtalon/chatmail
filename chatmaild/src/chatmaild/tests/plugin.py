@@ -16,10 +16,12 @@ def make_config(tmp_path):
     inipath = tmp_path.joinpath("chatmail.ini")
 
     def make_conf(mail_domain):
-        write_initial_config(inipath, mail_domain=mail_domain)
         basedir = tmp_path.joinpath(f"vmail/{mail_domain}")
         basedir.mkdir(parents=True, exist_ok=True)
-        return read_config(inipath, mail_basedir=basedir)
+        passdb = tmp_path.joinpath("vmail/passdb.sqlite")
+        overrides = dict(mailboxes_dir=str(basedir), passdb_path=str(passdb))
+        write_initial_config(inipath, mail_domain, overrides=overrides)
+        return read_config(inipath)
 
     return make_conf
 

@@ -37,13 +37,13 @@ def test_remove_stale_users(db, example_config):
 
     delete_inactive_users(db, example_config)
 
-    for p in example_config.mail_basedir.iterdir():
+    for p in example_config.mailboxes_dir.iterdir():
         assert not p.name.startswith("old")
 
     for addr in to_remove:
+        assert not example_config.get_user_maildir(addr).exists()
         with db.read_connection() as conn:
             assert not conn.get_user(addr)
-            assert not example_config.get_user_maildir(addr).exists()
 
     for addr in remain:
         assert example_config.get_user_maildir(addr).exists()

@@ -2,6 +2,14 @@
 
 ## untagged
 
+- BREAKING: new required chatmail.ini values:
+
+  mailboxes_dir = /home/vmail/mail/{mail_domain}
+  passdb = /home/vmail/passdb.sqlite
+  
+  reducing hardcoding these two paths all over the files, also improving testability. 
+  ([#351](https://github.com/deltachat/chatmail/pull/351))
+
 - BREAKING: new required chatmail.ini value 'delete_inactive_users_after = 100'
   which removes users from database and mails after 100 days without any login. 
   ([#350](https://github.com/deltachat/chatmail/pull/350))

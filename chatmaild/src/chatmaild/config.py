@@ -3,17 +3,15 @@ from pathlib import Path
 import iniconfig
 
 
-def read_config(inipath, mail_basedir=None):
+def read_config(inipath):
     assert Path(inipath).exists(), inipath
     cfg = iniconfig.IniConfig(inipath)
     params = cfg.sections["params"]
-    if mail_basedir is None:
-        mail_basedir = Path(f"/home/vmail/mail/{params['mail_domain']}")
-    return Config(inipath, params=params, mail_basedir=mail_basedir)
+    return Config(inipath, params=params)
 
 
 class Config:
-    def __init__(self, inipath, params, mail_basedir: Path):
+    def __init__(self, inipath, params):
         self._inipath = inipath
         self.mail_domain = params["mail_domain"]
         self.max_user_send_per_minute = int(params["max_user_send_per_minute"])
@@ -25,6 +23,8 @@ class Config:
         self.password_min_length = int(params["password_min_length"])
         self.passthrough_senders = params["passthrough_senders"].split()
         self.passthrough_recipients = params["passthrough_recipients"].split()
+        self.mailboxes_dir = Path(params["mailboxes_dir"].strip())
+        self.passdb_path = Path(params["passdb_path"].strip())
         self.filtermail_smtp_port = int(params["filtermail_smtp_port"])
         self.postfix_reinject_port = int(params["postfix_reinject_port"])
         self.iroh_relay = params.get("iroh_relay")
@@ -32,26 +32,40 @@ class Config:
         self.privacy_mail = params.get("privacy_mail")
         self.privacy_pdo = params.get("privacy_pdo")
         self.privacy_supervisor = params.get("privacy_supervisor")
-        self.mail_basedir = mail_basedir
 
     def _getbytefile(self):
         return open(self._inipath, "rb")
 
     def get_user_maildir(self, addr):
         if addr and addr != "." and "/" not in addr:
-            res = self.mail_basedir.joinpath(addr).resolve()
-            if res.is_relative_to(self.mail_basedir):
+            res = self.mailboxes_dir.joinpath(addr).resolve()
+            if res.is_relative_to(self.mailboxes_dir):
                 return res
         raise ValueError(f"invalid address {addr!r}")
 
 
-def write_initial_config(inipath, mail_domain):
+def write_initial_config(inipath, mail_domain, overrides):
+    """Write out default config file, using the specified config value overrides."""
     from importlib.resources import files
 
     inidir = files(__package__).joinpath("ini")
-    content = (
-        inidir.joinpath("chatmail.ini.f").read_text().format(mail_domain=mail_domain)
-    )
+    source_inipath = inidir.joinpath("chatmail.ini.f")
+    content = source_inipath.read_text().format(mail_domain=mail_domain)
+
+    # apply config overrides
+    new_lines = []
+    for line in content.split("\n"):
+        new_line = line.strip()
+        if new_line and new_line[0] not in "#[":
+            name, value = map(str.strip, new_line.split("=", maxsplit=1))
+            value = overrides.get(name, value)
+            new_line = f"{name} = {value}"
+        new_lines.append(new_line)
+
+    content = "\n".join(new_lines)
+
+    # apply testrun privacy overrides
+
     if mail_domain.endswith(".testrun.org"):
         override_inipath = inidir.joinpath("override-testrun.ini")
         privacy = iniconfig.IniConfig(override_inipath)["privacy"]
