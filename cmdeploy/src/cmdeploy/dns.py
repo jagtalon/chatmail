@@ -1,59 +1,60 @@
 import datetime
 import importlib
-import sys
+
+from jinja2 import Template
 
 from . import remote_funcs
 
 
-def show_dns(args, out) -> int:
+def get_initial_remote_data(sshexec, mail_domain):
+    return sshexec.logged(
+        call=remote_funcs.perform_initial_checks, kwargs=dict(mail_domain=mail_domain)
+    )
+
+
+def check_initial_remote_data(remote_data, print=print):
+    mail_domain = remote_data["mail_domain"]
+    if not remote_data["A"] and not remote_data["AAAA"]:
+        print("Missing A and/or AAAA DNS records for {mail_domain}!")
+    elif not remote_data["MTA_STS"]:
+        print("Missing MTA-STS CNAME record:")
+        print(f"mta-sts.{mail_domain}.   CNAME  {mail_domain}")
+    else:
+        return remote_data
+
+
+def get_filled_zone_file(remote_data):
+    sts_id = remote_data.get("sts_id")
+    if not sts_id:
+        sts_id = datetime.datetime.now().strftime("%Y%m%d%H%M")
+
+    template = importlib.resources.files(__package__).joinpath("chatmail.zone.j2")
+    content = template.read_text()
+    zonefile = Template(content).render(**remote_data)
+    lines = [x.strip() for x in zonefile.split("\n") if x.strip()]
+    lines.append("")
+    zonefile = "\n".join(lines)
+    return zonefile
+
+
+def check_full_zone(sshexec, remote_data, out, zonefile) -> int:
     """Check existing DNS records, optionally write them to zone file
     and return (exitcode, remote_data) tuple."""
-    template = importlib.resources.files(__package__).joinpath("chatmail.zone.f")
-    mail_domain = args.config.mail_domain
 
-    def log_progress(data):
-        sys.stdout.write(".")
-        sys.stdout.flush()
+    required_diff, recommended_diff = sshexec.logged(
+        remote_funcs.check_zonefile, kwargs=dict(zonefile=zonefile)
+    )
 
-    sshexec = args.get_sshexec(log=print if args.verbose else log_progress)
-    print("Checking DNS entries ", end="\n" if args.verbose else "")
+    if required_diff:
+        out.red("Please set required DNS entries at your DNS provider:\n")
+        for line in required_diff:
+            out(line)
+        return 1
+    elif recommended_diff:
+        out("WARNING: these recommended DNS entries are not set:\n")
+        for line in recommended_diff:
+            out(line)
+        return 0
 
-    remote_data = sshexec(remote_funcs.perform_initial_checks, mail_domain=mail_domain)
-
-    assert remote_data["ipv4"] or remote_data["ipv6"]
-
-    with open(template, "r") as f:
-        zonefile = f.read().format(
-            acme_account_url=remote_data["acme_account_url"],
-            dkim_entry=remote_data["dkim_entry"],
-            ipv6=remote_data["ipv6"],
-            ipv4=remote_data["ipv4"],
-            sts_id=datetime.datetime.now().strftime("%Y%m%d%H%M"),
-            chatmail_domain=args.config.mail_domain,
-        )
-
-    to_print = sshexec(remote_funcs.check_zonefile, zonefile=zonefile)
-    if not args.verbose:
-        print()
-
-    if getattr(args, "zonefile", None):
-        with open(args.zonefile, "w+") as zf:
-            zf.write(zonefile)
-        out.green(f"DNS records successfully written to: {args.zonefile}")
-        return 0, remote_data
-
-    if to_print:
-        to_print.insert(
-            0, "You should configure the following entries at your DNS provider:\n"
-        )
-        to_print.append(
-            "\nIf you already configured the DNS entries, "
-            "wait a bit until the DNS entries propagate to the Internet."
-        )
-        out.red("\n".join(to_print))
-        exit_code = 1
-    else:
-        out.green("Great! All your DNS entries are verified and correct.")
-        exit_code = 0
-
-    return exit_code, remote_data
+    out.green("Great! All your DNS entries are verified and correct.")
+    return 0

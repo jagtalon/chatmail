@@ -71,11 +71,30 @@ def maildata(request):
 
     assert datadir.exists(), datadir
 
-    def maildata(name, from_addr, to_addr):
+    def maildata(name, from_addr, to_addr, subject="..."):
         # Using `.read_bytes().decode()` instead of `.read_text()` to preserve newlines.
         data = datadir.joinpath(name).read_bytes().decode()
 
-        text = data.format(from_addr=from_addr, to_addr=to_addr)
+        text = data.format(from_addr=from_addr, to_addr=to_addr, subject=subject)
         return BytesParser(policy=policy.default).parsebytes(text.encode())
 
     return maildata
+
+
+@pytest.fixture
+def mockout():
+    class MockOut:
+        captured_red = []
+        captured_green = []
+        captured_plain = []
+
+        def red(self, msg):
+            self.captured_red.append(msg)
+
+        def green(self, msg):
+            self.captured_green.append(msg)
+
+        def __call__(self, msg):
+            self.captured_plain.append(msg)
+
+    return MockOut()

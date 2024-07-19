@@ -7,6 +7,7 @@ import argparse
 import importlib.resources
 import importlib.util
 import os
+import pathlib
 import shutil
 import subprocess
 import sys
@@ -15,8 +16,7 @@ from pathlib import Path
 from chatmaild.config import read_config, write_initial_config
 from termcolor import colored
 
-from . import remote_funcs
-from .dns import show_dns
+from . import dns, remote_funcs
 from .sshexec import SSHExec
 
 #
@@ -37,6 +37,7 @@ def init_cmd(args, out):
     mail_domain = args.chatmail_domain
     if args.inipath.exists():
         print(f"Path exists, not modifying: {args.inipath}")
+        return 1
     else:
         write_initial_config(args.inipath, mail_domain, overrides={})
         out.green(f"created config file for {mail_domain} in {args.inipath}")
@@ -53,20 +54,24 @@ def run_cmd_options(parser):
 
 def run_cmd(args, out):
     """Deploy chatmail services on the remote server."""
-    retcode, remote_data = show_dns(args, out)
+
+    sshexec = args.get_sshexec()
+    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain)
+    if not dns.check_initial_remote_data(remote_data, print=out.red):
+        return 1
 
     env = os.environ.copy()
     env["CHATMAIL_INI"] = args.inipath
     deploy_path = importlib.resources.files(__package__).joinpath("deploy.py").resolve()
     pyinf = "pyinfra --dry" if args.dry_run else "pyinfra"
-    cmd = f"{pyinf} --ssh-user root {args.config.mail_domain} {deploy_path}"
+    cmd = f"{pyinf} --ssh-user root {args.config.mail_domain} {deploy_path} -y"
 
-    out.check_call(cmd, env=env)
+    retcode = out.check_call(cmd, env=env)
     if retcode == 0:
-        out.green("Deploy completed, call `cmdeploy test` next.")
+        out.green("Deploy completed, call `cmdeploy dns` next.")
     elif not remote_data["acme_account_url"]:
         out.red("Deploy completed but letsencrypt not configured")
-        out.red("Run 'cmdeploy dns' or 'cmdeploy run' again")
+        out.red("Run 'cmdeploy run' again")
         retcode = 0
     else:
         out.red("Deploy failed")
@@ -77,13 +82,37 @@ def dns_cmd_options(parser):
     parser.add_argument(
         "--zonefile",
         dest="zonefile",
-        help="print the whole zonefile for deploying directly",
+        type=pathlib.Path,
+        default=None,
+        help="write out a zonefile",
     )
 
 
 def dns_cmd(args, out):
     """Check DNS entries and optionally generate dns zone file."""
-    retcode, remote_data = show_dns(args, out)
+    sshexec = args.get_sshexec()
+    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain)
+    if not remote_data:
+        return 1
+
+    if not remote_data["acme_account_url"]:
+        out.red("could not get letsencrypt account url, please run 'cmdeploy run'")
+        return 1
+
+    if not remote_data["dkim_entry"]:
+        out.red("could not determine dkim_entry, please run 'cmdeploy run'")
+        return 1
+
+    zonefile = dns.get_filled_zone_file(remote_data)
+
+    if args.zonefile:
+        args.zonefile.write_text(zonefile)
+        out.green(f"DNS records successfully written to: {args.zonefile}")
+        return 0
+
+    retcode = dns.check_full_zone(
+        sshexec, remote_data=remote_data, zonefile=zonefile, out=out
+    )
     return retcode
 
 
@@ -277,9 +306,9 @@ def main(args=None):
     if not hasattr(args, "func"):
         return parser.parse_args(["-h"])
 
-    def get_sshexec(log=None):
+    def get_sshexec():
         print(f"[ssh] login to {args.config.mail_domain}")
-        return SSHExec(args.config.mail_domain, remote_funcs, log=log)
+        return SSHExec(args.config.mail_domain, remote_funcs, verbose=args.verbose)
 
     args.get_sshexec = get_sshexec
 
@@ -300,7 +329,6 @@ def main(args=None):
         if res is None:
             res = 0
         return res
-
     except KeyboardInterrupt:
         out.red("KeyboardInterrupt")
         sys.exit(130)
