@@ -1,14 +1,30 @@
 # Changelog for chatmail deployment 
 
-## untagged
+## 1.4.0 2024-07-28
 
-- BREAKING: new required chatmail.ini values:
+- Add `disable_ipv6` config option to chatmail.ini.
+  Required if the server doesn't have IPv6 connectivity.
+  ([#312](https://github.com/deltachat/chatmail/pull/312))
 
-  mailboxes_dir = /home/vmail/mail/{mail_domain}
-  passdb = /home/vmail/passdb.sqlite
-  
-  reducing hardcoding these two paths all over the files, also improving testability. 
+- allow current K9/Thunderbird-mail releases to send encrypted messages
+  outside by accepting their localized "encrypted subject" strings. 
+  ([#370](https://github.com/deltachat/chatmail/pull/370))
+
+- Migrate and remove sqlite database in favor of password/lastlogin tracking 
+  in a user's maildir.  
+  ([#379](https://github.com/deltachat/chatmail/pull/379))
+
+- Require pyinfra V3 installed on the client side,
+  run `./scripts/initenv.sh` to upgrade locally.
+  ([#378](https://github.com/deltachat/chatmail/pull/378))
+
+- don't hardcode "/home/vmail" paths but rather set them 
+  once in the config object and use it everywhere else, 
+  thereby also improving testability.  
   ([#351](https://github.com/deltachat/chatmail/pull/351))
+  temporarily introduced obligatory "passdb_path" and "mailboxes_dir" 
+  settings but they were removed/obsoleted in 
+  ([#380](https://github.com/deltachat/chatmail/pull/380))
 
 - BREAKING: new required chatmail.ini value 'delete_inactive_users_after = 100'
   which removes users from database and mails after 100 days without any login. 
