@@ -5,6 +5,7 @@
 
 Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
 
+
 - You can create as many accounts as you want.
 - Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages on Delta Chat are untouched.
 - Only encrypted messages are allowed when sending, but you can receive unencrypted messages.
@@ -15,6 +16,12 @@ Welcome to [instant, interoperable, and privacy-centric email service](https://d
 - **Download** [Delta Chat](https://delta.chat) on your phone or computer.
 
 - **Tap** or scan this QR code to get a random `@{{config.mail_domain}}` e-mail address
+
+<a class="cta-button" href="DCACCOUNT:https://{{ config.mail_domain }}/new">Get a {{config.mail_domain}} chat profile</a>
+
+If you are viewing this page on a different device
+without a Delta Chat app,
+you can also **scan this QR code** with Delta Chat:
 
 <a href="DCACCOUNT:https://{{ config.mail_domain }}/new">
     <img width=300 style="float: none;" src="qr-chatmail-invite-{{config.mail_domain}}.png" /></a>

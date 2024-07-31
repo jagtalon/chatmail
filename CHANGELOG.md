@@ -1,5 +1,12 @@
 # Changelog for chatmail deployment 
 
+## untagged 
+
+- add optional "imap_rawlog" config option. If true, 
+  .in/.out files are created in user home dirs 
+  containing the imap protocol messages. 
+  ([#389](https://github.com/deltachat/chatmail/pull/389))
+
 ## 1.4.0 2024-07-28
 
 - Add `disable_ipv6` config option to chatmail.ini.
