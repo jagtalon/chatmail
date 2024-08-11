@@ -2,9 +2,15 @@
 
 ## untagged
 
+- avoid nginx listening on ipv6 if v6 is dsiabled 
+  ([#402](https://github.com/deltachat/chatmail/pull/402))
 
 - trigger "apt upgrade" during "cmdeploy run" 
   ([#398](https://github.com/deltachat/chatmail/pull/398))
+
+- drop hispanilandia passthrough address
+  ([#401](https://github.com/deltachat/chatmail/pull/401))
+
 
 ## 1.4.1 2024-07-31
 
