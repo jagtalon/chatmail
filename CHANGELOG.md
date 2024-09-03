@@ -2,8 +2,15 @@
 
 ## untagged
 
+- add a paragraph about "account deletion" to info page 
+  ([#405](https://github.com/deltachat/chatmail/pull/405))
+
 - avoid nginx listening on ipv6 if v6 is dsiabled 
   ([#402](https://github.com/deltachat/chatmail/pull/402))
+
+- refactor ssh-based execution to allow organizing remote functions in
+  modules. 
+  ([#396](https://github.com/deltachat/chatmail/pull/396))
 
 - trigger "apt upgrade" during "cmdeploy run" 
   ([#398](https://github.com/deltachat/chatmail/pull/398))
