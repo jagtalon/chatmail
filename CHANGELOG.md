@@ -2,6 +2,9 @@
 
 ## untagged
 
+- fix checking for required DNS records
+  ([#412](https://github.com/deltachat/chatmail/pull/412))
+
 - add a paragraph about "account deletion" to info page 
   ([#405](https://github.com/deltachat/chatmail/pull/405))
 
@@ -17,6 +20,8 @@
 
 - drop hispanilandia passthrough address
   ([#401](https://github.com/deltachat/chatmail/pull/401))
+
+- set CAA record flags to 0
 
 
 ## 1.4.1 2024-07-31
