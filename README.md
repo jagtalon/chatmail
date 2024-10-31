@@ -256,6 +256,71 @@ and rejects incorrectly authenticated emails with [`reject_sender_login_mismatch
 `From:` header must correspond to envelope MAIL FROM,
 this is ensured by `filtermail` proxy.
 
+## Migrating chatmail server to a new host
+
+If you want to migrate chatmail from an old machine
+to a new machine,
+you can use these steps.
+They were tested with a linux laptop;
+you might need to adjust some of the steps to your environment.
+
+Let's assume that your `mail_domain` is `mail.example.org`,
+all involved machines run Debian 12,
+your old server's IP address is `13.37.13.37`,
+and your new server's IP address is `13.12.23.42`.
+
+During the guide, you might get a warning about changed SSH Host keys;
+in this case, just run `ssh-keygen -R "mail.example.org"` as recommended
+to make sure you can connect with SSH.
+
+1. First, copy `/var/lib/acme` to the new server with
+   `ssh root@13.37.13.37 tar c /var/lib/acme | ssh root@13.12.23.42 tar x -C /var/lib/`.
+   This transfers your TLS certificate.
+
+2. You should also copy `/etc/dkimkeys` to the new server with
+   `ssh root@13.37.13.37 tar c /etc/dkimkeys | ssh root@13.12.23.42 tar x -C /etc/`
+   so the DKIM DNS record stays correct.
+
+3. On the new server, run `chown root: -R /var/lib/acme` and `chown root: -R /etc/dkimkeys` to make sure the permissions are correct.
+
+4. Run `cmdeploy run --disable-mail --ssh-host 13.12.23.42` to install chatmail on the new machine.
+   postfix and dovecot are disabled for now,
+   we will enable them later.
+
+5. Now, point DNS to the new IP addresses.
+
+   You can already remove the old IP addresses from DNS.
+   Existing Delta Chat users will still be able to connect
+   to the old server, send and receive messages,
+   but new users will fail to create new profiles
+   with your chatmail server.
+
+   If other servers try to deliver messages to your new server they will fail,
+   but normally email servers will retry delivering messages
+   for at least a week, so messages will not be lost.
+
+6. Now you can run `cmdeploy run --disable-mail --ssh-host 13.37.13.37` to disable your old server.
+
+   Now your users will notice the migration
+   and will not be able to send or receive messages
+   until the migration is completed.
+
+7. After everything is stopped,
+    you can copy the `/home/vmail/mail` directory to the new server.
+    It includes all user data, messages, password hashes, etc.
+
+    Just run: `ssh root@13.37.13.37 tar c /home/vmail/mail | ssh root@13.12.23.42 tar x -C /home/vmail/`
+
+    After this, your new server has all the necessary files to start operating :)
+
+8. To be sure the permissions are still fine,
+    run `chown vmail: -R /home/vmail` on the new server.
+
+9. Finally, you can run `cmdeploy run` to turn on chatmail on the new server.
+    Your users can continue using the chatmail server,
+    and messages which were sent after step 6. should arrive now.
+    Voilà!
+
 ## Setting up a reverse proxy
 
 A chatmail server does not depend on the client IP address

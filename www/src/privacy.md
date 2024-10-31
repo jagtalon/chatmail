@@ -3,8 +3,8 @@
 
 {% if config.mail_domain == "nine.testrun.org" %}
 Welcome to `{{config.mail_domain}}`, the default chatmail onboarding server for Delta Chat users. 
-It is operated on the side by a small sysops team employed by [merlinux](https://merlinux.eu),
-an open-source R&D company also acting as the fiscal sponsor of Delta Chat app developments. 
+It is operated on the side by a small sysops team
+on a voluntary basis.
 See [other chatmail servers](https://delta.chat/en/chatmail) for alternative server operators. 
 {% endif %}
 
@@ -23,18 +23,22 @@ A chatmail server behaves more like the Signal messaging server
 but does not know about phone numbers and securely and automatically interoperates 
 with other chatmail and classic e-mail servers. 
 
-In particular, this chatmail server 
+Unlike classic e-mail servers, this chatmail server 
 
 - unconditionally removes messages after {{ config.delete_mails_after }} days,
 
 - prohibits sending out un-encrypted messages,
 
-- only has temporary log files used for debugging purposes.
+- does not store Internet addresses ("IP addresses"), 
 
-Legally, authorities might still regard chatmail as a "classic e-mail" server
-which collects and retains personal data. 
-We do not agree on this interpretation. Nevertheless, we provide more legal details below
-to make life easier for data protection specialists and lawyers scrutinizing chatmail operations. 
+- does not process IP addresses in relation to email addresses.
+
+Due to the resulting lack of personal data processing
+this chatmail server may not require a privacy policy.
+
+Nevertheless, we provide legal details below to make life easier
+for data protection specialists and lawyers scrutinizing chatmail operations.
+
 
 
 ## 1. Name and contact information 
@@ -48,18 +52,18 @@ E-mail: {{ config.privacy_mail }}
 
 ## 2. Processing when using chat e-mail services
 
-We provide e-mail services optimized for the use from [Delta Chat](https://delta.chat) apps 
+We provide services optimized for the use from [Delta Chat](https://delta.chat) apps
 and process only the data necessary
-for the setup and technical execution of the e-mail dispatch.
-The purpose of the processing is to
-read, write, manage, delete, send, and receive emails.
+for the setup and technical execution of message delivery.
+The purpose of the processing is that users can
+read, write, manage, delete, send, and receive chat messages.
 For this purpose,
 we operate server-side software
-that enables us to send and receive e-mail messages.
-Allowing the use of the e-mail service,
-we process the following data and details:
+that enables us to send and receive messages.
 
-- Outgoing and incoming messages (SMTP) are stored for transit 
+We process the following data and details:
+
+- Outgoing and incoming messages (SMTP) are stored for transit
   on behalf of their users until the message can be delivered.
 
 - E-Mail-Messages are stored for the recipient and made accessible via IMAP protocols,
@@ -67,8 +71,14 @@ we process the following data and details:
 
 - IMAP and SMTP protocols are password protected with unique credentials for each account.
 
-- Users can retrieve or delete all stored messages 
+- Users can retrieve or delete all stored messages
   without intervention from the operators using standard IMAP client tools.
+
+- Users can connect to a "realtime relay service"
+  to establish Peer-to-Peer connection between user devices,
+  allowing them to send and retrieve ephemeral messages
+  which are never stored on the chatmail server, also not in encrypted form.
+
 
 ### 2.1 Account setup
 
@@ -239,7 +249,7 @@ please feel free to contact us by email:
 ## 6. Validity of this privacy policy 
 
 This data protection declaration is valid
-as of *December 2023*.
+as of *October 2024*.
 Due to the further development of our service and offers
 or due to changed legal or official requirements,
 it may become necessary to revise this data protection declaration from time to time.

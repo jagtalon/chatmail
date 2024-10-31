@@ -39,7 +39,7 @@ password_min_length = 9
 passthrough_senders =
 
 # list of e-mail recipients for which to accept outbound un-encrypted mails
-# (space-separated)
+# (space-separated, item may start with "@" to whitelist whole recipient domains)
 passthrough_recipients = xstore@testrun.org 
 
 #
@@ -54,6 +54,13 @@ postfix_reinject_port = 10025
 
 # if set to "True" IPv6 is disabled
 disable_ipv6 = False
+
+# Defaults to https://iroh.{{mail_domain}} and running `iroh-relay` on the chatmail
+# service.
+# If you set it to anything else, the service will be disabled
+# and users will be directed to use the given iroh relay URL.
+# Set it to empty string if you want users to use their default iroh relay.
+# iroh_relay =
 
 # Address on which `mtail` listens,
 # e.g. 127.0.0.1 or some private network

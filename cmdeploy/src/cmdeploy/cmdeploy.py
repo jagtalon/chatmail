@@ -58,22 +58,30 @@ def run_cmd_options(parser):
         action="store_true",
         help="install/upgrade the server, but disable postfix & dovecot for now"
     )
+    parser.add_argument(
+        "--ssh-host",
+        dest="ssh_host",
+        help="specify an SSH host to deploy to; uses mail_domain from chatmail.ini by default"
+    )
 
 
 def run_cmd(args, out):
     """Deploy chatmail services on the remote server."""
 
     sshexec = args.get_sshexec()
-    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain)
-    if not dns.check_initial_remote_data(remote_data, print=out.red):
+    require_iroh = args.config.enable_iroh_relay
+    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain, require_iroh)
+    if not dns.check_initial_remote_data(remote_data, require_iroh, print=out.red):
         return 1
 
     env = os.environ.copy()
     env["CHATMAIL_INI"] = args.inipath
     env["CHATMAIL_DISABLE_MAIL"] = "True" if args.disable_mail else ""
+    env["CHATMAIL_REQUIRE_IROH"] = "True" if require_iroh else ""
     deploy_path = importlib.resources.files(__package__).joinpath("deploy.py").resolve()
     pyinf = "pyinfra --dry" if args.dry_run else "pyinfra"
-    cmd = f"{pyinf} --ssh-user root {args.config.mail_domain} {deploy_path} -y"
+    ssh_host = args.config.mail_domain if not args.ssh_host else args.ssh_host
+    cmd = f"{pyinf} --ssh-user root {ssh_host} {deploy_path} -y"
     if version.parse(pyinfra.__version__) < version.parse("3"):
         out.red("Please re-run scripts/initenv.sh to update pyinfra to version 3.")
         return 1
@@ -103,7 +111,8 @@ def dns_cmd_options(parser):
 def dns_cmd(args, out):
     """Check DNS entries and optionally generate dns zone file."""
     sshexec = args.get_sshexec()
-    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain)
+    require_iroh = args.config.enable_iroh_relay
+    remote_data = dns.get_initial_remote_data(sshexec, args.config.mail_domain, require_iroh)
     if not remote_data:
         return 1
 

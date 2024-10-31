@@ -2,6 +2,23 @@
 
 ## untagged
 
+- deploy `iroh-relay` (requires new "iroh.{mail_domain}" DNS entry), 
+  also update "realtime relay services" in privacy policy. 
+  ([#434](https://github.com/deltachat/chatmail/pull/434))
+
+- add guide to migrate chatmail to a new server
+  ([#429](https://github.com/deltachat/chatmail/pull/429))
+
+- disable anvil authentication penalty
+  ([#414](https://github.com/deltachat/chatmail/pull/444)
+
+- increase `request_queue_size` for UNIX sockets to 1000.
+  ([#437](https://github.com/deltachat/chatmail/pull/437))
+
+- add argument to `cmdeploy run` for specifying
+  a different SSH host than `mail_domain`
+  ([#439](https://github.com/deltachat/chatmail/pull/439))
+
 - query autoritative nameserver to bypass DNS cache
   ([#424](https://github.com/deltachat/chatmail/pull/424))
 
@@ -17,6 +34,9 @@
 
 - fix checking for required DNS records
   ([#412](https://github.com/deltachat/chatmail/pull/412))
+
+- add support for specifying whole domains for recipient passthrough list
+  ([#408](https://github.com/deltachat/chatmail/pull/408))
 
 - add a paragraph about "account deletion" to info page 
   ([#405](https://github.com/deltachat/chatmail/pull/405))
@@ -41,6 +61,9 @@
 
 - fix OpenPGP payload check
   ([#435](https://github.com/deltachat/chatmail/pull/435))
+
+- fix Dovecot quota_max_mail_size to use max_message_size config value
+  ([#438](https://github.com/deltachat/chatmail/pull/438))
 
 
 ## 1.4.1 2024-07-31
