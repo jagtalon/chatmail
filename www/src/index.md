@@ -1,15 +1,16 @@
 
 <img class="banner" src="collage-top.png"/>
 
-# Chika, a [private email service](/privacy.html) designed for [Delta Chat](https://delta.chat) 
+## Chika, a service designed for [Delta Chat](https://delta.chat) users 
 
-Welcome to [instant, interoperable, and privacy-centric email service](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
-
+Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
 
 - You can create as many accounts as you want.
 - Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages on Delta Chat are untouched.
 - Only encrypted messages are allowed when sending, but you can receive unencrypted messages.
-- No phone numbers, other email addresses, names, etc. are needed for an account. Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well.
+- No phone numbers, other email addresses, names, etc. are needed for an account. 
+
+Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well!
 
 ## Creating an account:
 
@@ -28,7 +29,7 @@ you can also **scan this QR code** with Delta Chat:
 
 - **Choose** your avatar and name
 
-- **Start** chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee). Feel free to send me a message at [jag@aangat.lahat.computer](https://i.delta.chat/#8E071610C91955716231BF83F372F6F66711BF27&a=jag%40aangat.lahat.computer&n=Jag%20Talon&i=eHAJEholYVq&s=9pYlgM6Bezd).
+- **Start** chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee). Feel free to send me a message at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
 ## There are more of these:
 
