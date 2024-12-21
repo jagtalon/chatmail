@@ -29,7 +29,7 @@ def check_initial_remote_data(remote_data, *, print=print):
 def get_filled_zone_file(remote_data):
     sts_id = remote_data.get("sts_id")
     if not sts_id:
-        sts_id = datetime.datetime.now().strftime("%Y%m%d%H%M")
+        remote_data["sts_id"] = datetime.datetime.now().strftime("%Y%m%d%H%M")
 
     template = importlib.resources.files(__package__).joinpath("chatmail.zone.j2")
     content = template.read_text()
@@ -49,16 +49,18 @@ def check_full_zone(sshexec, remote_data, out, zonefile) -> int:
         kwargs=dict(zonefile=zonefile, mail_domain=remote_data["mail_domain"]),
     )
 
+    returncode = 0
     if required_diff:
         out.red("Please set required DNS entries at your DNS provider:\n")
         for line in required_diff:
             out(line)
-        return 1
-    elif recommended_diff:
+        out("")
+        returncode = 1
+    if recommended_diff:
         out("WARNING: these recommended DNS entries are not set:\n")
         for line in recommended_diff:
             out(line)
-        return 0
 
-    out.green("Great! All your DNS entries are verified and correct.")
-    return 0
+    if not (recommended_diff or required_diff):
+        out.green("Great! All your DNS entries are verified and correct.")
+    return returncode

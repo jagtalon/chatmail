@@ -2,6 +2,17 @@
 
 ## untagged
 
+## 1.5.0 2024-12-20
+
+- cmdeploy dns: always show recommended DNS records
+  ([#463](https://github.com/deltachat/chatmail/pull/463))
+
+- add `--all` to `cmdeploy dns`
+  ([#462](https://github.com/deltachat/chatmail/pull/462))
+
+- fix `_mta-sts` TXT DNS record
+  ([#461](https://github.com/deltachat/chatmail/pull/461)
+
 - deploy `iroh-relay` and also update "realtime relay services" in privacy policy. 
   ([#434](https://github.com/deltachat/chatmail/pull/434))
   ([#451](https://github.com/deltachat/chatmail/pull/451))
