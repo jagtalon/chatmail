@@ -6,9 +6,11 @@
 Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
 
 - You can create as many accounts as you want.
-- Messages are automatically deleted on the server after {{config.delete_mails_after}} days. Downloaded messages on Delta Chat are untouched.
-- Only encrypted messages are allowed when sending, but you can receive unencrypted messages.
 - No phone numbers, other email addresses, names, etc. are needed for an account. 
+- It unconditionally removes messages after {{ config.delete_mails_after }} days.
+- It prohibits sending out unencrypted messages.
+- It does not store Internet addresses ("IP addresses"). 
+- It does not process IP addresses in relation to email addresses.
 
 Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well!
 
