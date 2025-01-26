@@ -3,16 +3,22 @@
 
 ## Chika, a service designed for [Delta Chat](https://delta.chat) users 
 
-Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer). This server has the following features:
+Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). This server has the following features:
 
 - You can create as many accounts as you want.
-- No phone numbers, other email addresses, names, etc. are needed for an account. 
+- No phone numbers, email addresses, names, etc. are needed for an account.
+- Users get {{ config.max_mailbox_size }} of storage space.
 - It unconditionally removes messages after {{ config.delete_mails_after }} days.
 - It prohibits sending out unencrypted messages.
-- It does not store Internet addresses ("IP addresses"). 
-- It does not process IP addresses in relation to email addresses.
+- It does not store IP addresses.
 
-Feel free to use [Tor Browser](https://torproject.org) and [Orbot](https://orbot.app/) when you're signing up and using the service as well!
+Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're signing up and using the service as well!
+
+## Nazis fuck off
+
+The services under Aangat Lahat is a form of digital mutual aid that provides free online communications to people who want it. But note that promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form is not allowed on this instance.
+
+If I find out that you're promoting these awful ideologies you will be blocked. Report any fuckers to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
 ## Creating an account:
 
@@ -35,10 +41,5 @@ you can also **scan this QR code** with Delta Chat:
 
 ## There are more of these:
 
-This is just one of many chatmail servers on the internet. Feel free to check out:
-
-- [nine.testrun.org](https://nine.testrun.org)
-- [bcc.chat](https://bcc.chat)
-
-And [more](https://delta.chat/chatmail)!
+This is just one of many chatmail servers on the internet. Feel free to [check out the listed servers on delta.chat](https://delta.chat/chatmail)!
 
