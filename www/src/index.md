@@ -18,9 +18,11 @@ Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.ap
 
 ## Nazis fuck off
 
-The services under Aangat Lahat is a form of digital mutual aid that provides free online communications to people who want it. But note that promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form is not allowed on this instance.
+The services under Aangat Lahat is a form of digital mutual aid that provides free online communications to people who want it. It's centered around care for one another.
 
-If I find out that you're promoting these awful ideologies you will be blocked. Report any fuckers to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
+So if you're using this service to practice the opposite: promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form you will be blocked.
+
+Report any fuckers to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
 ---
 
