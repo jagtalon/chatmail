@@ -2,7 +2,9 @@
 
 # Chika, a service designed for [Delta Chat](https://delta.chat) users 
 
-Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). [Delta Chat](https://delta.chat) is a decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
+Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). 
+
+[Delta Chat](https://delta.chat) is a decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
 
 - No phone numbers, email addresses, real names, etc. are needed for an account.
 - It gives users {{ config.max_mailbox_size }} of storage space.
