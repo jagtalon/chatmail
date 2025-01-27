@@ -12,7 +12,7 @@ Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat
 - It prohibits sending out unencrypted messages.
 - It does not store IP addresses.
 
-Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're using this service as well for increased anonymity.
+Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're using this service as well for increased privacy.
 
 ## Nazis fuck off
 
