@@ -1,51 +1,45 @@
 
-<img class="banner" src="collage-top.png"/>
 
-## Chika, a service designed for [Delta Chat](https://delta.chat) users 
+# Chika, a service designed for [Delta Chat](https://delta.chat) users 
 
-Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). This server has the following features:
+Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). [Delta Chat](https://delta.chat) is a decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
 
-- You can create as many accounts as you want.
-- No phone numbers, email addresses, names, etc. are needed for an account.
-- Users get {{ config.max_mailbox_size }} of storage space.
-- It unconditionally removes messages after {{ config.delete_mails_after }} days.
+- No phone numbers, email addresses, real names, etc. are needed for an account.
+- It gives users {{ config.max_mailbox_size }} of storage space.
+- It automatically deletes messages on the server after {{ config.delete_mails_after }} days to minimize data retention.
 - It prohibits sending out unencrypted messages.
 - It does not store IP addresses.
 
-Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're signing up and using the service as well!
-
----
+Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're using this service as well for increased anonymity.
 
 ## Nazis fuck off
 
-The services under Aangat Lahat is a form of digital mutual aid that provides free online communications to people who want it. It's centered around care for one another.
+The services under Aangat Lahat is a form of digital mutual aid that provides free online communications to people who want it. It's centered around caring for one another and giving people autonomy.
 
 So if you're using this service to practice the opposite: promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form you will be blocked.
 
 Report any fuckers to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
----
+## Creating an account
 
-## Creating an account:
+1\. <b>Download</b> [Delta Chat](https://delta.chat) on your phone or computer.
 
-- **Download** [Delta Chat](https://delta.chat) on your phone or computer.
+2\. <b>Tap</b> or scan this QR code to get a random `@{{config.mail_domain}}` address
 
-- **Tap** or scan this QR code to get a random `@{{config.mail_domain}}` e-mail address
-
-<a class="cta-button" href="DCACCOUNT:https://{{ config.mail_domain }}/new">Get a {{config.mail_domain}} chat profile</a>
+<a class="cta-button" href="DCACCOUNT:https://{{ config.mail_domain }}/new"><button>Get a {{config.mail_domain}} chat profile</button></a>
 
 If you are viewing this page on a different device
 without a Delta Chat app,
-you can also **scan this QR code** with Delta Chat:
+you can also <b>scan this QR code</b> with Delta Chat:
 
 <a href="DCACCOUNT:https://{{ config.mail_domain }}/new">
-    <img width=300 style="float: none;" src="qr-chatmail-invite-{{config.mail_domain}}.png" /></a>
+    <img width="300" src="chika.aangat.lahat.computer.png" />
+    <!-- <img width=300 style="float: none;" src="qr-chatmail-invite-{{config.mail_domain}}.png" /> -->
+</a>
 
-- **Choose** your avatar and name
+3\. <b>Choose</b> your avatar and name
 
-- **Start** chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee). Feel free to send me a message at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
-
----
+4\. <b>Start</b> chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee) or invite links like this one [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
 ## There are more of these:
 
