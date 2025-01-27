@@ -6,7 +6,7 @@ Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat
 
 - No phone numbers, email addresses, real names, etc. are needed for an account.
 - It gives users {{ config.max_mailbox_size }} of storage space.
-- It automatically deletes messages on the server after {{ config.delete_mails_after }} days to minimize data retention.
+- It automatically deletes messages on the server after {{ config.delete_mails_after }} days to balance data retention and people who go offline for extended periods of time.
 - It prohibits sending out unencrypted messages.
 - It does not store IP addresses.
 
@@ -41,7 +41,10 @@ you can also <b>scan this QR code</b> with Delta Chat:
 
 4\. <b>Start</b> chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee) or invite links like this one [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
-## There are more of these:
+## There are more of these
 
 This is just one of many chatmail servers on the internet. Feel free to [check out the listed servers on delta.chat](https://delta.chat/chatmail)!
 
+## Donations
+
+I would appreciate donations! I run services like this one, [Tor relays](https://metrics.torproject.org/rs.html#search/contact:jag@aangat.lahat.computer), and a [zine and mask distro](https://durian-distro.org). I accept [Ko-fi](https://ko-fi.com/duriandistro), [Liberapay](https://liberapay.com/durian-distro/), or [Monero](https://durian-distro.org/#Monero). Thank you! 
