@@ -1,4 +1,4 @@
-
+![A group of fish swimming together in seaweed](fish.jpg)
 
 # Chika, a service designed for [Delta Chat](https://delta.chat) users 
 
@@ -7,10 +7,12 @@ Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat
 [Delta Chat](https://delta.chat) is a decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
 
 - No phone numbers, email addresses, real names, etc. are needed for an account.
-- It gives users {{ config.max_mailbox_size }} of storage space.
-- It automatically deletes messages on the server after {{ config.delete_mails_after }} days to balance data retention and people who go offline for extended periods of time.
+- {{ config.max_mailbox_size }} of storage space for users.
+- Server keeps messages for {{ config.delete_mails_after }} days. 
+    - (Don't worry this only affects you if you don't open the app in this time.)
 - It prohibits sending out unencrypted messages.
 - It does not store IP addresses.
+- Inactive accounts are deleted after 2 years.
 
 Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're using this service as well for increased privacy.
 
