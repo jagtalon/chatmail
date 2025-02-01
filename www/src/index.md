@@ -41,7 +41,7 @@ If you work in any capacity (whether as a direct employee or a contractor) for a
 - Immigration enforcement
 - Intelligence/spy organisations
 
-<b>Ideologies or affiliations based on controlled counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.</b> However, telling oppressed groups how they should or shouldn't oppose their oppression is not (like Palestinians resisting genocide.)
+<b>Ideologies or affiliations based on controlled counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.</b> However, telling oppressed groups how they should or shouldn't oppose their oppression is not (like telling Palestinians that they shouldn't be fighting the occupation of their land.)
 
 Report people to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
 
