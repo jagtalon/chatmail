@@ -1,26 +1,28 @@
 ![A group of fish swimming together in seaweed](fish.jpg)
 
-# Chika, a service designed for [Delta Chat](https://delta.chat) users 
+# Chika, a free server designed for [Delta Chat](https://delta.chat) users
+
+_Chika means gossip in Tagalog._ 
 
 Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat/chatmail) run by [Aangat Lahat](https://aangat.lahat.computer) / [Durian Distro](https://durian-distro.org/). 
 
-[Delta Chat](https://delta.chat) is a decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
+[Delta Chat](https://delta.chat) is a secure decentralized messenger that allows people to chat with each other even if they're on different servers. This is just one of [many](https://delta.chat/chatmail), and it has the following features:
 
 - No phone numbers, email addresses, real names, etc. are needed for an account.
 - {{ config.max_mailbox_size }} of storage space for users.
-- Server keeps messages for {{ config.delete_mails_after }} days. 
-    - (Don't worry this only affects you if you don't open the app in this time.)
-- It prohibits sending out unencrypted messages.
+- Server keeps messages for at most {{ config.delete_mails_after }} days. 
+    - (Don't worry this only affects you if you're offline for this long.)
+- People aren't allowed to send unencrypted messages.
 - It does not store IP addresses.
 - Inactive accounts are deleted after 2 years.
 
-Feel free to use [Tor Browser](https://torproject.org), [Orbot](https://orbot.app/), or a trusted VPN when you're using this service as well for increased privacy.
+Feel free to use [Orbot](https://orbot.app/) or a trusted VPN when you're using this service as well for increased privacy.
 
-## Fascists fuck off
+## Nazis fuck off
 
-The services under Aangat Lahat is a form of digital mutual aid that provides free, private, and secure online communications to people. It's centered around caring for one another and giving people autonomy over their lives.
+This service is built around the concept of care and mutual aid. Since data extraction and surveillance is everywhere in our digital world, I wanted to share a server that gives free, private, and secure communications to people. We need to take care and help each other, now more than ever. 
 
-So if you're using this service to practice the opposite, you will be blocked. Promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form is not allowed.
+So if you're using this service to practice the opposite like promoting fascism, nazism, militarism, copaganda, zionism, state nationalism, antisemitism, or contributing to the discrimination, harassment or harm against any individual or group through forms of discrimination based on gender, race, religion or sexual orientation, along with issuing statements which are racist, xenophobic, ableist or discriminatory in any other form, you will be blocked. Also, don't use this service to promote your businesses.
 
 If you have the following or similar kinds of ideologies or affiliations, you are not welcome here:
 
@@ -30,20 +32,21 @@ If you have the following or similar kinds of ideologies or affiliations, you ar
 - TERF, SWERF or otherwise anti-trans or anti-sex worker
 - Truscum, transmed or other kinds of identity policing.
 - People who are generally phobic/shitty towards non-binary genders.
-- Religious fundamentalism or anti-abortion. (other types of religion are A-OK!)
+- Religious fundamentalism or anti-abortion.
 - Militarism, chauvinism, ethno-nationalism, xenophobia or similar.
-- Shitty furries (nazifurs and any furry that thinks being a bigoted piece of shit is okay!)
 - Pro-bestiality/zoophilia
+- People who share sexualized images of children (lolicon)
+- Tech bros (capitalists promoting AI / cryptocurrency / tech businesses)
 
 If you work in any capacity (whether as a direct employee or a contractor) for any of the following types of organisations, you aren't welcome here, and if you reveal yourself as such, you will be blocked:
 
+- Military
 - Police
 - Immigration enforcement
-- Intelligence/spy organisations
 
-<b>Ideologies or affiliations based on controlled counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.</b> However, telling oppressed groups how they should or shouldn't oppose their oppression is not (like telling Palestinians that they shouldn't be fighting the occupation of their land.)
+_However, deologies or affiliations based on counter-violence in opposition to oppression (like antifa/antifascism) are welcome here._
 
-Report people to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
+Report these people to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
 
 ## Creating an account
 
@@ -66,10 +69,7 @@ you can also <b>scan this QR code</b> with Delta Chat:
 
 4\. <b>Start</b> chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee) or invite links like this one [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
 
-## There are more of these
-
-This is just one of many chatmail servers on the internet. Feel free to [check out the listed servers on delta.chat](https://delta.chat/chatmail)!
-
 ## Donations
 
-I would appreciate donations! I run services like this one, [Tor relays](https://metrics.torproject.org/rs.html#search/contact:jag@aangat.lahat.computer), and a [zine and mask distro](https://durian-distro.org). I accept [Ko-fi](https://ko-fi.com/duriandistro), [Liberapay](https://liberapay.com/durian-distro/), or [Monero](https://durian-distro.org/#Monero). Thank you! 
+- I would appreciate donations! I run services like this one, [Tor relays](https://metrics.torproject.org/rs.html#search/family:5589C16812A8E9C5BF1EB25EEC8060B877E24F56), and a [zine and mask distro](https://durian-distro.org). I accept [Ko-fi](https://ko-fi.com/duriandistro), [Liberapay](https://liberapay.com/durian-distro/), or [Monero](https://durian-distro.org/#Monero).
+- Donate to [Delta Chat](https://delta.chat/en/contribute) as well if you can!
