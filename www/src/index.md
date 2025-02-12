@@ -65,7 +65,7 @@ If you work in any capacity (whether as a direct employee or a contractor) for a
 - Police
 - Immigration enforcement
 
-However, deologies or affiliations based on counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.
+However, ideologies or affiliations based on counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.
 
 Report accounts to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
 
