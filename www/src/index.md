@@ -56,7 +56,7 @@ If you have the following or similar kinds of ideologies or affiliations, you ar
 - Religious fundamentalism or anti-abortion.
 - Militarism, chauvinism, ethno-nationalism, xenophobia or similar.
 - Pro-bestiality/zoophilia
-- People who share sexualized images of children (lolicon)
+- People who share sexualized images of children (lolicon or similar)
 - Tech bros (capitalists promoting AI / cryptocurrency / tech businesses)
 
 If you work in any capacity (whether as a direct employee or a contractor) for any of the following types of organisations, you aren't welcome here, and if you reveal yourself as such, you will be blocked:
@@ -73,3 +73,10 @@ Report accounts to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7
 
 - I would appreciate donations to cover labor and server costs! I run services like this one, [Tor relays](https://metrics.torproject.org/rs.html#search/family:5589C16812A8E9C5BF1EB25EEC8060B877E24F56), and a [zine and mask distro](https://durian-distro.org). I accept [Ko-fi](https://ko-fi.com/duriandistro), [Liberapay](https://liberapay.com/durian-distro/), or [Monero](https://durian-distro.org/#Monero).
 - Donate to [Delta Chat](https://delta.chat/en/contribute) as well if you can!
+
+## News
+
+*February 12, 2025*
+<i>Bush warblers start singing in the mountains</i>
+
+Moved the server to a VPS in [UDN](https://www.urdn.com.ua). They have more flexible plans that lets me increase CPU, RAM, and disk space a little bit at a time.
