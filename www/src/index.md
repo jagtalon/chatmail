@@ -76,7 +76,7 @@ Report accounts to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7
 
 ## News
 
-*February 12, 2025*
+#### February 12, 2025
 <i>Bush warblers start singing in the mountains</i>
 
-Moved the server to a VPS in [UDN](https://www.urdn.com.ua). They have more flexible plans that lets me increase CPU, RAM, and disk space a little bit at a time.
+Moved the server to a VPS in [UDN](https://www.urdn.com.ua). They have more flexible plans that lets me increase CPU, RAM, and disk space a little bit at a time. I also wanted to operate the server outside of my own jurisdiction to give some protection to people using this service.
