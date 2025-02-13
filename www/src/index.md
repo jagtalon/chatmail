@@ -18,6 +18,8 @@ Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat
 
 Feel free to use [Orbot](https://orbot.app/) or a trusted VPN when you're using this service as well for increased privacy.
 
+If you're having trouble connecting, check out the [status page](https://lahat.computer/status/babababa) to see if there are any issues.
+
 ## Creating an account
 
 1\. <b>Download</b> [Delta Chat](https://delta.chat) on your phone or computer.
@@ -75,6 +77,10 @@ Report accounts to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7
 - Donate to [Delta Chat](https://delta.chat/en/contribute) as well if you can!
 
 ## News
+
+#### February 13, 2025 (Bush warblers start singing in the mountains)
+
+Just my luck! After moving to a new VPS, [UDN](https://www.urdn.com.ua) went down so we're back on [Tornado VPS](https://tornadovps.com/). Sorry for the long downtime.
 
 #### February 12, 2025 (Bush warblers start singing in the mountains)
 
