@@ -39,7 +39,7 @@ you can also <b>scan this QR code</b> with Delta Chat:
 
 3\. <b>Choose</b> your avatar and name
 
-4\. <b>Start</b> chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee) or invite links like this one [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR).
+4\. <b>Start</b> chatting with any Delta Chat contacts using [QR invite codes](https://delta.chat/en/help#howtoe2ee).
 
 ## Nazis fuck off
 
@@ -69,7 +69,7 @@ If you work in any capacity (whether as a direct employee or a contractor) for a
 
 However, ideologies or affiliations based on counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.
 
-Report accounts to me at [durian.distro@systemli.org](https://i.delta.chat/#A0E7290EB162D14C5E32358E38559370D0875CF0&a=durian.distro%40systemli.org&n=&i=g6jPAj4yzsm&s=8G3sbHejPQR). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
+Report accounts to me at [durian.distro@systemli.org](mailto:durian.distro@systemli.org). Thank you to [weirder.earth](https://github.com/weirderearth/weirder-rules/blob/main/rules-and-etiquette.md) and [Autistici](https://www.autistici.org/who/policy) for the inspiration.
 
 ## Donations
 
