@@ -1,3 +1,4 @@
+import datetime
 import smtplib
 
 import pytest
@@ -51,6 +52,14 @@ class TestSSHExecutor:
             assert "AssertionError" in str(e)
         else:
             pytest.fail("didn't raise exception")
+
+    def test_opendkim_restarted(self, sshexec):
+        """check that opendkim is not running for longer than a day."""
+        out = sshexec(call=remote.rshell.shell, kwargs=dict(command="systemctl status opendkim"))
+        assert type(out) == str
+        since_date_str = out.split("since ")[1].split(";")[0]
+        since_date = datetime.datetime.strptime(since_date_str, "%a %Y-%m-%d %H:%M:%S %Z")
+        assert (datetime.datetime.now() - since_date).total_seconds() < 60 * 60 * 24
 
 
 def test_remote(remote, imap_or_smtp):
@@ -113,6 +122,27 @@ def test_reject_missing_dkim(cmsetup, maildata, from_addr):
     with smtplib.SMTP(cmsetup.maildomain, 25) as s:
         with pytest.raises(smtplib.SMTPDataError, match="No valid DKIM signature"):
             s.sendmail(from_addr=from_addr, to_addrs=recipient.addr, msg=msg)
+
+
+def test_rewrite_subject(cmsetup, maildata):
+    """Test that subject gets replaced with [...]."""
+    user1, user2 = cmsetup.gen_users(2)
+
+    sent_msg = maildata(
+        "encrypted.eml",
+        from_addr=user1.addr,
+        to_addr=user2.addr,
+        subject="Unencrypted subject",
+    ).as_string()
+    user1.smtp.sendmail(from_addr=user1.addr, to_addrs=[user2.addr], msg=sent_msg)
+
+    messages = user2.imap.fetch_all_messages()
+    assert len(messages) == 1
+    rcvd_msg = messages[0]
+    assert "Subject: [...]" not in sent_msg
+    assert "Subject: [...]" in rcvd_msg
+    assert "Subject: Unencrypted subject" in sent_msg
+    assert "Subject: Unencrypted subject" not in rcvd_msg
 
 
 @pytest.mark.slow

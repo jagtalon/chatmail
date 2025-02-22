@@ -217,49 +217,36 @@ def _configure_opendkim(domain: str, dkim_selector: str = "dkim") -> bool:
             commands=[
                 f"opendkim-genkey -D /etc/dkimkeys -d {domain} -s {dkim_selector}"
             ],
-            _sudo=True,
-            _sudo_user="opendkim",
+            _use_su_login=True,
+            _su_user="opendkim",
         )
 
+    service_file = files.put(
+        name="Configure opendkim to restart once a day",
+        src=importlib.resources.files(__package__).joinpath("opendkim/systemd.conf"),
+        dest="/etc/systemd/system/opendkim.service.d/10-prevent-memory-leak.conf",
+    )
+    need_restart |= service_file.changed
+
+
     return need_restart
 
 
-def _install_mta_sts_daemon() -> bool:
-    need_restart = False
+def _uninstall_mta_sts_daemon() -> None:
+    # Remove configuration.
+    files.file("/etc/mta-sts-daemon.yml", present=False)
 
-    config = files.put(
-        name="upload postfix-mta-sts-resolver config",
-        src=importlib.resources.files(__package__).joinpath(
-            "postfix/mta-sts-daemon.yml"
-        ),
-        dest="/etc/mta-sts-daemon.yml",
-        user="root",
-        group="root",
-        mode="644",
+    files.directory("/usr/local/lib/postfix-mta-sts-resolver", present=False)
+
+    files.file("/etc/systemd/system/mta-sts-daemon.service", present=False)
+
+    systemd.service(
+        name="Stop MTA-STS daemon",
+        service="mta-sts-daemon.service",
+        daemon_reload=True,
+        running=False,
+        enabled=False,
     )
-    need_restart |= config.changed
-
-    server.shell(
-        name="install postfix-mta-sts-resolver with pip",
-        commands=[
-            "python3 -m virtualenv /usr/local/lib/postfix-mta-sts-resolver",
-            "/usr/local/lib/postfix-mta-sts-resolver/bin/pip install postfix-mta-sts-resolver",
-        ],
-    )
-
-    systemd_unit = files.put(
-        name="upload mta-sts-daemon systemd unit",
-        src=importlib.resources.files(__package__).joinpath(
-            "postfix/mta-sts-daemon.service"
-        ),
-        dest="/etc/systemd/system/mta-sts-daemon.service",
-        user="root",
-        group="root",
-        mode="644",
-    )
-    need_restart |= systemd_unit.changed
-
-    return need_restart
 
 
 def _configure_postfix(config: Config, debug: bool = False) -> bool:
@@ -663,8 +650,8 @@ def deploy_chatmail(config_path: Path, disable_mail: bool) -> None:
     debug = False
     dovecot_need_restart = _configure_dovecot(config, debug=debug)
     postfix_need_restart = _configure_postfix(config, debug=debug)
-    mta_sts_need_restart = _install_mta_sts_daemon()
     nginx_need_restart = _configure_nginx(config)
+    _uninstall_mta_sts_daemon()
 
     _remove_rspamd()
     opendkim_need_restart = _configure_opendkim(mail_domain, "opendkim")
@@ -674,16 +661,8 @@ def deploy_chatmail(config_path: Path, disable_mail: bool) -> None:
         service="opendkim.service",
         running=True,
         enabled=True,
+        daemon_reload=opendkim_need_restart,
         restarted=opendkim_need_restart,
-    )
-
-    systemd.service(
-        name="Start and enable MTA-STS daemon",
-        service="mta-sts-daemon.service",
-        daemon_reload=True,
-        running=True,
-        enabled=True,
-        restarted=mta_sts_need_restart,
     )
 
     # Dovecot should be started before Postfix
@@ -734,6 +713,11 @@ def deploy_chatmail(config_path: Path, disable_mail: bool) -> None:
         running=True,
         enabled=True,
         restarted=journald_conf.changed,
+    )
+    files.directory(
+        name="Ensure old logs on disk are deleted",
+        path="/var/log/journal/",
+        present=False,
     )
 
     apt.packages(

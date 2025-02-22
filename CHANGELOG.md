@@ -2,14 +2,38 @@
 
 ## untagged
 
+- filtermail: don't require exactly 2 lines after openPGP payload
+  ([#497](https://github.com/chatmail/chatmail/pull/497))
+
 - cmdeploy dns: offer alternative DKIM record format for some web interfaces
   ([#470](https://github.com/deltachat/chatmail/pull/470))
+
+- journald: remove old logs from disk
+  ([#490](https://github.com/deltachat/chatmail/pull/490))
+
+- opendkim: restart once every day to mend RAM leaks
+  ([#498](https://github.com/chatmail/chatmail/pull/498)
 
 - migration guide: let opendkim own the DKIM keys directory
   ([#468](https://github.com/deltachat/chatmail/pull/468))
 
 - improve secure-join message detection
   ([#473](https://github.com/deltachat/chatmail/pull/473))
+
+- use old crypt lib in python < 3.11
+  ([#483](https://github.com/deltachat/chatmail/pull/483))
+
+- chatmaild: set umask to 0700 for doveauth + metadata
+  ([#490](https://github.com/deltachat/chatmail/pull/492))
+
+- remove MTA-STS daemon
+  ([#488](https://github.com/deltachat/chatmail/pull/488))
+
+- replace `Subject` with `[...]` for all outgoing mails.
+  ([#481](https://github.com/deltachat/chatmail/pull/481))
+
+- opendkim: use su instead of sudo
+  ([#491](https://github.com/deltachat/chatmail/pull/491))
 
 ## 1.5.0 2024-12-20
 
