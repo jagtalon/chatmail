@@ -18,7 +18,7 @@ Welcome to [instant, interoperable, and privacy-centric chat](https://delta.chat
 
 Feel free to use [Orbot](https://orbot.app/) or a trusted VPN when you're using this service as well for increased privacy.
 
-If you're having trouble connecting, check out the [status page](https://lahat.computer/status/babababa) to see if there are any issues.
+If you're having trouble connecting, check out the [status page](https://status.lahat.computer/) to see if there are any issues.
 
 ## Creating an account
 
@@ -66,6 +66,7 @@ If you work in any capacity (whether as a direct employee or a contractor) for a
 - Military
 - Police
 - Immigration enforcement
+- Government official
 
 However, ideologies or affiliations based on counter-violence in opposition to oppression (like antifa/antifascism) are welcome here.
 
